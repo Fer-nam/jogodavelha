@@ -16,21 +16,21 @@ function handleClick(event){
     let position = square.id;
 
     if(handleMove(position)){
-        alert("O jogo acabou!");
+        
+        setTimeout(()=>{
+            alert("O jogo acabou! - O vencedor foi o jogador: " + playTime);
+        },10);
+        
+        
     };
-    updateSquares();
+    updateSquare(position);
 }
 
-function updateSquares(){
- 
-    let squares = document.querySelectorAll(".square");
+function updateSquare(position){
+    let square = document.getElementById(position.toString());
+    let symbols = board[position];
+    square.innerHTML = `<div class='${symbols}'></div>`;
 
-    squares.forEach((square)=>{
-        let position = square.id;
-        let symbols = board[position];
-
-        if(symbols != ''){
-            square.innerHTML = `<div class='${symbols}'></div>`;
-        }
-    })
 }
+
+

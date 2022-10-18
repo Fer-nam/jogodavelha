@@ -1,7 +1,19 @@
 let board = ['','','','','','','','',''];
 let playTime = 0;
 let symbols = ['o', 'x'];
-let gameOver = false
+let gameOver = false;
+
+let winStates =[
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6],
+];
+
 
 function handleMove(position){
 
@@ -13,12 +25,9 @@ if(board[position]==''){
 
     gameOver = isWin();
 
-    if(!gameOver==false){}
-    if(playTime == 0){
-        playTime = 1;
-    }else{
-        playTime = 0;
-    }
+    playTime = (playTime == 0) ? 1:0;
+
+    
 }
 
 
@@ -29,17 +38,7 @@ return gameOver;
 
 function isWin(){
 
-    let winStates =[
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6],
-    ]
-
+    
     for(let i = 0;i<winStates.length; i++){
         let seq = winStates[i];
 
